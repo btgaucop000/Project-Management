@@ -1,4 +1,4 @@
-package com.destiny.demo;
+package com.destiny.pma;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
