@@ -11,19 +11,16 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Project {
+@AllArgsConstructor
+public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String name;
-	
-	private String stage; //NOTSTARTED, COMPLETED, INPROGRESS
-	
-	private String description;
+	private String firstName;
+	private String lastName;
+	private String email;
 
-	
 }
