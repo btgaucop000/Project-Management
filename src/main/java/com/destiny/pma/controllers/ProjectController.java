@@ -10,17 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.destiny.pma.dao.IProjectRepository;
 import com.destiny.pma.entities.Project;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
 	
 	@Autowired
 	private IProjectRepository projectRepo;
+
+	@GetMapping
+	public String displayProjectList(Model model) {
+		List<Project> projectList = projectRepo.findAll();
+		model.addAttribute("projects", projectList);
+		return "projects/list-projects";
+	}
 	
 	@GetMapping("/new")
 	public String displayProjectForm(Model model) {
 		model.addAttribute("project", new Project());
-		return "new-project";
+		return "projects/new-project";
 	}
 	
 	@PostMapping("/save")
@@ -28,7 +37,7 @@ public class ProjectController {
 		projectRepo.save(project);
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/projects/new";
+		return "redirect:/projects";
 		
 	}
 }
