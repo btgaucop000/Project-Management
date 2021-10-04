@@ -2,6 +2,7 @@ package com.destiny.pma.controllers;
 
 import com.destiny.pma.dao.IEmployeeRepository;
 import com.destiny.pma.dao.IProjectRepository;
+import com.destiny.pma.dto.EmployeeProject;
 import com.destiny.pma.entities.Employee;
 import com.destiny.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class HomeController {
         List<Project> projectList = projectRepo.findAll();
         model.addAttribute("projects", projectList);
 
-        List<Employee> employeeList = employeeRepo.findAll();
-        model.addAttribute("employees", employeeList);
+        List<EmployeeProject> employeeProjects = employeeRepo.getEmployeeProject();
+
+        model.addAttribute("employeeProjects", employeeProjects);
         return "main/home";
     }
 }
